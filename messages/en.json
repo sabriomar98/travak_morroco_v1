@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Home",
+    "tours": "Tours",
+    "dayTrips": "Day Trips",
+    "activities": "Activities",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Discover the Magic of Morocco",
+    "subtitle": "Authentic travel experiences with expert local guides",
+    "exploreTours": "Explore Tours",
+    "contactUs": "Contact Us"
+  },
+  "tours": {
+    "title": "Our Tours",
+    "description": "Discover our organized tours across Morocco",
+    "from": "From",
+    "days": "days",
+    "viewDetails": "View Details",
+    "departureFrom": "Departure from"
+  },
+  "dayTrips": {
+    "title": "Day Trips",
+    "description": "Explore the wonders of Morocco on unforgettable day trips",
+    "from": "From",
+    "viewDetails": "View Details"
+  },
+  "activities": {
+    "title": "Activities",
+    "description": "Discover exceptional activities to enrich your stay in Morocco",
+    "viewDetails": "View Details"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Discover our passion for Morocco"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Send",
+    "success": "Message sent successfully"
+  },
+  "enquiry": {
+    "title": "Enquiry",
+    "description": "Fill out the form below and we will contact you soon"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated"
+  },
+  "cta": {
+    "title": "Create Your Experience",
+    "description": "Contact us to combine multiple activities and create your custom trip",
+    "button": "Contact Us"
+  },
+  "footer": {
+    "description": "Authentic travel experiences across Morocco",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved"
+  }
+}
