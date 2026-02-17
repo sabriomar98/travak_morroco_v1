@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
-export function Footer() {
+export default function Footer() {
   return (
     <footer className="bg-[#1E293B] text-white">
       <div className="container mx-auto px-4 py-12">
