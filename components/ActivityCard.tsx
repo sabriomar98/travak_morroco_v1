@@ -14,6 +14,21 @@ interface ActivityCardProps {
 }
 
 export default function ActivityCard({ activity, locale }: ActivityCardProps) {
+  const text = {
+    fr: {
+      days: (n: number) => `${n} jour${n > 1 ? 's' : ''}`,
+      from: 'À partir de',
+      details: 'Voir détails'
+    },
+    en: {
+      days: (n: number) => `${n} day${n > 1 ? 's' : ''}`,
+      from: 'From',
+      details: 'View details'
+    }
+  };
+
+  const t = text[locale as 'fr' | 'en'] || text.en;
+
   return (
     <motion.div
       whileHover={{ 
@@ -53,7 +68,7 @@ export default function ActivityCard({ activity, locale }: ActivityCardProps) {
             {activity.durationDays && (
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
-                <span>{activity.durationDays} jour{activity.durationDays > 1 ? 's' : ''}</span>
+                <span>{t.days(activity.durationDays)}</span>
               </div>
             )}
           </div>
@@ -62,12 +77,12 @@ export default function ActivityCard({ activity, locale }: ActivityCardProps) {
         <CardFooter className="flex items-center justify-between">
           {activity.price && (
             <div className="text-lg font-bold text-primary">
-              À partir de {activity.price}€
+              {t.from} {activity.price}€
             </div>
           )}
           <Link href={`/${locale}/activities/${activity.slug}`}>
             <Button variant="outline" className="group-hover:bg-primary group-hover:text-white transition-colors">
-              Voir détails
+              {t.details}
             </Button>
           </Link>
         </CardFooter>
