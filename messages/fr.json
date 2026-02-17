@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "tours": "Circuits",
+    "dayTrips": "Excursions",
+    "activities": "Activités",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Découvrez la Magie du Maroc",
+    "subtitle": "Voyages authentiques avec des guides locaux experts",
+    "exploreTours": "Explorer les Circuits",
+    "contactUs": "Nous Contacter"
+  },
+  "tours": {
+    "title": "Nos Circuits",
+    "description": "Découvrez nos circuits organisés à travers le Maroc",
+    "from": "À partir de",
+    "days": "jours",
+    "viewDetails": "Voir Détails",
+    "departureFrom": "Départ de"
+  },
+  "dayTrips": {
+    "title": "Excursions d'une Journée",
+    "description": "Explorez les merveilles du Maroc lors d'excursions inoubliables",
+    "from": "À partir de",
+    "viewDetails": "Voir Détails"
+  },
+  "activities": {
+    "title": "Activités",
+    "description": "Découvrez des activités exceptionnelles pour enrichir votre séjour au Maroc",
+    "viewDetails": "Voir Détails"
+  },
+  "about": {
+    "title": "À Propos de Nous",
+    "description": "Découvrez notre passion pour le Maroc"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "name": "Nom complet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "submit": "Envoyer",
+    "success": "Message envoyé avec succès"
+  },
+  "enquiry": {
+    "title": "Demande de Renseignements",
+    "description": "Remplissez le formulaire ci-dessous et nous vous contacterons rapidement"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour"
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "lastUpdated": "Dernière mise à jour"
+  },
+  "cta": {
+    "title": "Créez votre expérience",
+    "description": "Contactez-nous pour combiner plusieurs activités et créer votre voyage sur mesure",
+    "button": "Nous contacter"
+  },
+  "footer": {
+    "description": "Voyages authentiques à travers le Maroc",
+    "quickLinks": "Liens Rapides",
+    "followUs": "Suivez-nous",
+    "copyright": "Tous droits réservés"
+  }
+}
