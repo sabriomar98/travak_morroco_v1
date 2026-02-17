@@ -1,20 +1,31 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { locales } from '@/i18n/request';
 
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'tours' });
+type Props = {
+  params: Promise<{ locale: string; slug: string }>;
+};
+
+export function generateStaticParams() {
+  return [];
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale, slug } = await params;
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('tours');
   
   return {
-    title: `Tour - ${params.slug}`,
+    title: `Tour - ${slug}`,
     description: t('description'),
   };
 }
 
-export default function TourDetailPage({ params }: { params: { locale: string; slug: string } }) {
-  unstable_setRequestLocale(params.locale);
+export default async function TourDetailPage({ params }: Props) {
+  const { locale, slug } = await params;
+  unstable_setRequestLocale(locale);
   
-  const t = useTranslations('tours');
+  const t = await getTranslations('tours');
 
   return (
     <main className="min-h-screen py-8 md:py-12 lg:py-16">
@@ -27,7 +38,7 @@ export default function TourDetailPage({ params }: { params: { locale: string; s
 
           {/* Tour Details */}
           <section className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold">Tour: {params.slug}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold">Tour: {slug}</h1>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="md:col-span-2 space-y-6">

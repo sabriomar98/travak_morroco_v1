@@ -1,10 +1,20 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { locales } from '@/i18n/request';
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'hero' });
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('hero');
   
   return {
     title: 'Travel Morocco - ' + t('title'),
@@ -12,13 +22,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function HomePage({ params }: { params: { locale: string } }) {
-  unstable_setRequestLocale(params.locale);
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
   
-  const t = useTranslations('hero');
-  const tTours = useTranslations('tours');
-  const tActivities = useTranslations('activities');
-  const tCta = useTranslations('cta');
+  const t = await getTranslations('hero');
+  const tTours = await getTranslations('tours');
+  const tActivities = await getTranslations('activities');
+  const tCta = await getTranslations('cta');
 
   return (
     <main className="min-h-screen py-8 md:py-12 lg:py-16">
@@ -33,10 +44,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               {t('subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href={`/${params.locale}/tours`}>
+              <Link href={`/${locale}/tours`}>
                 <Button size="lg">{t('exploreTours')}</Button>
               </Link>
-              <Link href={`/${params.locale}/contact`}>
+              <Link href={`/${locale}/contact`}>
                 <Button size="lg" variant="outline">{t('contactUs')}</Button>
               </Link>
             </div>
@@ -61,7 +72,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               </div>
             </div>
             <div className="text-center">
-              <Link href={`/${params.locale}/tours`}>
+              <Link href={`/${locale}/tours`}>
                 <Button variant="outline">{tTours('viewDetails')}</Button>
               </Link>
             </div>
@@ -86,7 +97,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               </div>
             </div>
             <div className="text-center">
-              <Link href={`/${params.locale}/activities`}>
+              <Link href={`/${locale}/activities`}>
                 <Button variant="outline">{tActivities('viewDetails')}</Button>
               </Link>
             </div>
@@ -96,7 +107,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <section className="bg-primary/10 rounded-lg p-8 md:p-12 text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">{tCta('title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{tCta('description')}</p>
-            <Link href={`/${params.locale}/contact`}>
+            <Link href={`/${locale}/contact`}>
               <Button size="lg">{tCta('button')}</Button>
             </Link>
           </section>

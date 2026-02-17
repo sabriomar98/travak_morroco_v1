@@ -1,9 +1,19 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
+import { locales } from '@/i18n/request';
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'contact' });
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('contact');
   
   return {
     title: t('title'),
@@ -11,10 +21,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function ContactPage({ params }: { params: { locale: string } }) {
-  unstable_setRequestLocale(params.locale);
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
   
-  const t = useTranslations('contact');
+  const t = await getTranslations('contact');
 
   return (
     <main className="min-h-screen py-8 md:py-12 lg:py-16">

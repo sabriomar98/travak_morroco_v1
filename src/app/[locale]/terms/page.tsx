@@ -1,8 +1,18 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/request';
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'terms' });
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
+  const t = await getTranslations('terms');
   
   return {
     title: t('title'),
@@ -10,10 +20,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function TermsPage({ params }: { params: { locale: string } }) {
-  unstable_setRequestLocale(params.locale);
+export default async function TermsPage({ params }: Props) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
   
-  const t = useTranslations('terms');
+  const t = await getTranslations('terms');
 
   return (
     <main className="min-h-screen py-8 md:py-12 lg:py-16">
