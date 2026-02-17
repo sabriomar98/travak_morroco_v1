@@ -8,7 +8,6 @@ interface TestimonialCardProps {
   country: string
   rating: number
   review: string
-  avatar?: string
 }
 
 export function TestimonialCard({ name, country, rating, review }: TestimonialCardProps) {

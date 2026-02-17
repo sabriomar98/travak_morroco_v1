@@ -20,7 +20,11 @@ export function TourCard({ title, description, duration, price, image }: TourCar
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="overflow-hidden group cursor-pointer h-full border-none shadow-lg hover:shadow-2xl transition-all">
+      <Card 
+        className="overflow-hidden group h-full border-none shadow-lg hover:shadow-2xl transition-all"
+        role="article"
+        aria-label={`${title} tour package`}
+      >
         <div className="relative h-64 overflow-hidden">
           <Image
             src={image}

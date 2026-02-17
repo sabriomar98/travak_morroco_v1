@@ -144,6 +144,7 @@ export function ContactForm() {
               <Input
                 id="date"
                 type="date"
+                min={new Date().toISOString().split('T')[0]}
                 {...register("date", { required: "Date is required" })}
               />
               {errors.date && (
